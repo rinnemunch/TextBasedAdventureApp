@@ -57,6 +57,38 @@ int main() {
                 cout << "\nInvalid choice. Try again.\n";
             }
         }
+
+        else if (currentRoom == "Armory") {
+            cout << "\nYou are in the Armory. Old swords and cracked shields cover the walls.\n";
+            cout << "1. Return to Entrance\n";
+            cout << "Choose an option: ";
+
+            int choice;
+            cin >> choice;
+
+            if (choice == 1) {
+                currentRoom = "Entrance";
+            }
+            else {
+                cout << "\nInvalid choice. Try again.\n";
+            }
+        }
+
+        else if (currentRoom == "Hallway") {
+            cout << "\nYou are in the Hallway. It's quiet... too quiet.\n";
+            cout << "1. Return to Entrance\n";
+            cout << "Choose an option: ";
+
+            int choice;
+            cin >> choice;
+
+            if (choice == 1) {
+                currentRoom = "Entrance";
+            }
+            else {
+                cout << "\nInvalid choice. Try again.\n";
+            }
+        }
     }
 
     return 0;
