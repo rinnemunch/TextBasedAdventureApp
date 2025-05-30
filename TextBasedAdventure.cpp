@@ -121,7 +121,7 @@ int main() {
                     cout << "\nYou picked up a rusty old sword. It might still work...\n";
                 }
                 else if (choice == 2) {
-                    cout << "\nYou examine the walls. One sword has a notch shaped like a dragon’s tooth.\n";
+                    cout << "\nYou examine the walls. One sword has a notch shaped like a dragon's tooth.\n";
                 }
                 else if (choice == 3) {
                     currentRoom = "Entrance";
