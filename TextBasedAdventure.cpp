@@ -5,6 +5,7 @@ int main() {
     bool gameRunning = true;
     string currentRoom = "Menu";
     bool hasSword = false; 
+    bool enemyDefeated = false; 
 
     while (gameRunning) {
 
@@ -124,7 +125,22 @@ int main() {
 
 
         else if (currentRoom == "Hallway") {
-            cout << "\nYou are in the Hallway. It's quiet... too quiet.\n";
+            if (!enemyDefeated) {
+                cout << "\nA goblin jumps out from the shadows!\n";
+
+                if (hasSword) {
+                    cout << "You raise your sword! The goblin shrieks and runs away.\n";
+                }
+                else {
+                    cout << "You panic... but the goblin seems just as scared and runs off.\n";
+                }
+
+                enemyDefeated = true;
+            }
+            else {
+                cout << "\nThe hallway is quiet. Whatever was here before is gone.\n";
+            }
+
             cout << "1. Return to Entrance\n";
             cout << "Choose an option: ";
 
@@ -137,7 +153,8 @@ int main() {
             else {
                 cout << "\nInvalid choice. Try again.\n";
             }
-        }
+}
+
     }
 
     return 0;
