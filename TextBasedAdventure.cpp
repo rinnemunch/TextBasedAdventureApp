@@ -4,8 +4,8 @@ using namespace std;
 int main() {
     bool gameRunning = true;
     string currentRoom = "Menu";
-    bool hasSword = false; 
-    bool enemyDefeated = false; 
+    bool hasSword = false;
+    bool enemyDefeated = false;
 
     while (gameRunning) {
 
@@ -23,7 +23,7 @@ int main() {
             if (choice == 1) {
                 currentRoom = "Entrance";
                 cout << "\nYou step into the dungeon... it's dark and cold.\n";
-                    cout << R"ART(
+                cout << R"ART(
                   .7
                 .'/ 
                / /  
@@ -57,7 +57,6 @@ int main() {
                               ".__""">G>-.__.-">       .--,_
     )ART" << '\n';
 
-
                 cout << "Current Room: " << currentRoom << endl;
             }
             else if (choice == 2) {
@@ -73,7 +72,8 @@ int main() {
             cout << "\nYou are standing in the dungeon entrance.\n";
             cout << "1. Go left to the Armory\n";
             cout << "2. Go right to the Hallway\n";
-            cout << "3. Exit to Main Menu\n";
+            cout << "3. Examine the room\n";
+            cout << "4. Exit to Main Menu\n";
             cout << "Choose an option: ";
 
             int choice;
@@ -88,6 +88,9 @@ int main() {
                 cout << "\nYou walk into a long, shadowy hallway.\n";
             }
             else if (choice == 3) {
+                cout << "\nYou notice faded carvings on the stone walls. This place is older than it looks.\n";
+            }
+            else if (choice == 4) {
                 currentRoom = "Menu";
             }
             else {
@@ -100,29 +103,45 @@ int main() {
 
             if (!hasSword) {
                 cout << "1. Take the sword\n";
-                cout << "2. Return to Entrance\n";
+                cout << "2. Examine the room\n";
+                cout << "3. Return to Entrance\n";
             }
             else {
-                cout << "1. Return to Entrance\n";
-            } 
+                cout << "1. Examine the room\n";
+                cout << "2. Return to Entrance\n";
+            }
 
             cout << "Choose an option: ";
-
             int choice;
             cin >> choice;
 
-            if (!hasSword && choice == 1) {
-                hasSword = true;
-                cout << "\nYou picked up a rusty old sword. It might still work...\n";
-            }
-            else if ((hasSword && choice == 1) || (!hasSword && choice == 2)) {
-                currentRoom = "Entrance";
+            if (!hasSword) {
+                if (choice == 1) {
+                    hasSword = true;
+                    cout << "\nYou picked up a rusty old sword. It might still work...\n";
+                }
+                else if (choice == 2) {
+                    cout << "\nYou examine the walls. One sword has a notch shaped like a dragon’s tooth.\n";
+                }
+                else if (choice == 3) {
+                    currentRoom = "Entrance";
+                }
+                else {
+                    cout << "\nInvalid choice. Try again.\n";
+                }
             }
             else {
-                cout << "\nInvalid choice. Try again.\n";
+                if (choice == 1) {
+                    cout << "\nYou examine the walls. One sword has a notch shaped like a dragon’s tooth.\n";
+                }
+                else if (choice == 2) {
+                    currentRoom = "Entrance";
+                }
+                else {
+                    cout << "\nInvalid choice. Try again.\n";
+                }
             }
         }
-
 
         else if (currentRoom == "Hallway") {
             if (!enemyDefeated) {
@@ -141,20 +160,22 @@ int main() {
                 cout << "\nThe hallway is quiet. Whatever was here before is gone.\n";
             }
 
-            cout << "1. Return to Entrance\n";
+            cout << "1. Examine the hallway\n";
+            cout << "2. Return to Entrance\n";
             cout << "Choose an option: ";
-
             int choice;
             cin >> choice;
 
             if (choice == 1) {
+                cout << "\nYou find strange claw marks on the walls... something else might be down here.\n";
+            }
+            else if (choice == 2) {
                 currentRoom = "Entrance";
             }
             else {
                 cout << "\nInvalid choice. Try again.\n";
             }
-}
-
+        }
     }
 
     return 0;
