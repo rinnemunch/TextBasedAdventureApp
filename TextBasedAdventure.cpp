@@ -103,7 +103,9 @@ int main() {
             }
             else {
                 cout << "1. Return to Entrance\n";
-            }
+            } 
+
+            cout << "Choose an option: ";
 
             int choice;
             cin >> choice;
