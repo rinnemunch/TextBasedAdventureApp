@@ -4,6 +4,7 @@ using namespace std;
 int main() {
     bool gameRunning = true;
     string currentRoom = "Menu";
+    bool hasSword = false; 
 
     while (gameRunning) {
 
@@ -95,19 +96,30 @@ int main() {
 
         else if (currentRoom == "Armory") {
             cout << "\nYou are in the Armory. Old swords and cracked shields cover the walls.\n";
-            cout << "1. Return to Entrance\n";
-            cout << "Choose an option: ";
+
+            if (!hasSword) {
+                cout << "1. Take the sword\n";
+                cout << "2. Return to Entrance\n";
+            }
+            else {
+                cout << "1. Return to Entrance\n";
+            }
 
             int choice;
             cin >> choice;
 
-            if (choice == 1) {
+            if (!hasSword && choice == 1) {
+                hasSword = true;
+                cout << "\nYou picked up a rusty old sword. It might still work...\n";
+            }
+            else if ((hasSword && choice == 1) || (!hasSword && choice == 2)) {
                 currentRoom = "Entrance";
             }
             else {
                 cout << "\nInvalid choice. Try again.\n";
             }
         }
+
 
         else if (currentRoom == "Hallway") {
             cout << "\nYou are in the Hallway. It's quiet... too quiet.\n";
