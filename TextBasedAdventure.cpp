@@ -44,6 +44,7 @@ int main() {
     string currentRoom = "Menu";
     bool hasSword = false;
     bool enemyDefeated = false;
+    int playerHealth = 100; 
 
     while (gameRunning) {
 
@@ -60,7 +61,8 @@ int main() {
 
             if (choice == 1) {
                 currentRoom = "Entrance";
-                cout << "\nYou step into the dungeon... it's dark and cold.\n";
+                cout << "\nYou step into the dungeon... it's dark and cold.\n"; 
+                cout << "Health: " << playerHealth << endl; 
                 showDungeonArt();
                 cout << "Current Room: " << currentRoom << endl;
             }
@@ -156,9 +158,17 @@ int main() {
                     cout << "You raise your sword! The goblin shrieks and runs away.\n";
                 }
                 else {
-                    cout << "You panic... but the goblin seems just as scared and runs off.\n";
+                    cout << "You panic... the goblin scratches you before fleeing!\n";
+                    playerHealth -= 25; 
+                    cout << "You took 25 damage. Health: " << playerHealth << endl;
                 }
 
+                if (playerHealth <= 0) {
+                    cout << "\nYou've taken too much damage and collapse...\n"; 
+                    cout << "GAME OVER\n";
+                    gameRunning = false; 
+                }
+                
                 enemyDefeated = true;
             }
             else {
