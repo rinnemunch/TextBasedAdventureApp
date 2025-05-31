@@ -219,7 +219,19 @@ int main() {
             cin >> choice;
 
             if (choice == 1) {
-                cout << "\nYou find a torn page... it mentions a creature sealed deep below.\n";
+                cout << "\nYou find a torn page... it mentions a creature sealed deep below.\n"; 
+                cout << "Keep reading? (1 = Yes, 2 = No): "; 
+
+                int readChoice; 
+                cin >> readChoice; 
+
+                if (readChoice == 1) {
+                    cout << "\nYou read further... The page speaks of a Lich King buried beneath the dungeon,\n";
+                    cout << "sealed away by fire and blood. His return could unmake the world.\n";
+                }
+                else {
+                    cout << "\nYou put the book back.\n";
+                }
             }
             else if (choice == 2) {
                 currentRoom = "Entrance";
