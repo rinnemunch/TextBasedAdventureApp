@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
 void showDungeonArt() {
@@ -35,7 +36,7 @@ void showDungeonArt() {
                             \"-.__""|!|"-.__.-".)     \ \
                              "-.__""\_|"-.__.-"./      \ l
                               ".__""">G>-.__.-">       .--,_
-    )ART" << '\n';
+    )ART";
 }
 
 int main() {
@@ -44,6 +45,7 @@ int main() {
     bool hasSword = false;
     bool enemyDefeated = false;
     int playerHealth = 100;
+    string playerName;
 
     while (gameRunning) {
 
@@ -68,7 +70,6 @@ int main() {
          |/         \|
 
 )";
-
             cout << "1. Enter the Dungeon\n";
             cout << "2. Quit Game\n";
             cout << "Choose an option: ";
@@ -77,8 +78,12 @@ int main() {
             cin >> choice;
 
             if (choice == 1) {
+                cin.ignore(); // clear input buffer
+                cout << "\nBefore you enter... what is your name, adventurer?\n";
+                getline(cin, playerName);
+
                 currentRoom = "Entrance";
-                cout << "\nYou step into the dungeon... it's dark and cold.\n";
+                cout << "\nWelcome, " << playerName << ". You step into the dungeon... it's dark and cold.\n";
                 cout << "Health: " << playerHealth << endl;
                 showDungeonArt();
                 cout << "Current Room: " << currentRoom << endl;
@@ -123,8 +128,6 @@ int main() {
                 cout << "\nInvalid choice. Try again.\n";
             }
         }
-
-
 
         else if (currentRoom == "Armory") {
             cout << "\nYou are in the Armory. Old swords and cracked shields cover the walls.\n";
@@ -187,7 +190,6 @@ int main() {
                     if (fightChoice == 1) {
                         cout << "\nYou slash the goblin! It lets out a final screech.\n";
                         enemyDefeated = true;
-                        
                     }
                     else if (fightChoice == 2) {
                         cout << "\nYou let the goblin flee. It vanishes into the dark.\n";
@@ -198,7 +200,6 @@ int main() {
                         enemyDefeated = true;
                     }
                 }
-
                 else {
                     cout << "You panic... the goblin scratches you before fleeing!\n";
                     cout << R"ASCII(
@@ -212,7 +213,7 @@ int main() {
                        \ \__/\__/ /  
                      ___\ \|--|/ /___
                     /`    \      /    `\
-                    )ASCII" << '\n';
+                    )ASCII";
 
                     playerHealth -= 25;
                     cout << "You took 25 damage. Health: " << playerHealth << endl;
@@ -257,11 +258,11 @@ int main() {
             cin >> choice;
 
             if (choice == 1) {
-                cout << "\nYou find a torn page... it mentions a creature sealed deep below.\n"; 
-                cout << "Keep reading? (1 = Yes, 2 = No): "; 
+                cout << "\nYou find a torn page... it mentions a creature sealed deep below.\n";
+                cout << "Keep reading? (1 = Yes, 2 = No): ";
 
-                int readChoice; 
-                cin >> readChoice; 
+                int readChoice;
+                cin >> readChoice;
 
                 if (readChoice == 1) {
                     cout << "\nYou read further... The page speaks of a Lich King buried beneath the dungeon,\n";
