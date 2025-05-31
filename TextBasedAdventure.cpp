@@ -92,6 +92,39 @@ int main() {
             }
         }
 
+        else if (currentRoom == "Entrance") {
+            cout << "\nYou are standing in the dungeon entrance.\n";
+            cout << "1. Go left to the Armory\n";
+            cout << "2. Go right to the Hallway\n";
+            cout << "3. Go forward to the Library\n";
+            cout << "4. Examine the room\n";
+            cout << "5. Return to Menu\n";
+            cout << "Choose an option: ";
+
+            int choice;
+            cin >> choice;
+
+            if (choice == 1) {
+                currentRoom = "Armory";
+            }
+            else if (choice == 2) {
+                currentRoom = "Hallway";
+            }
+            else if (choice == 3) {
+                currentRoom = "Library";
+            }
+            else if (choice == 4) {
+                cout << "\nYou examine your surroundings. The air is thick. A carving on the wall shows a battle from long ago.\n";
+            }
+            else if (choice == 5) {
+                currentRoom = "Menu";
+            }
+            else {
+                cout << "\nInvalid choice. Try again.\n";
+            }
+        }
+
+
 
         else if (currentRoom == "Armory") {
             cout << "\nYou are in the Armory. Old swords and cracked shields cover the walls.\n";
