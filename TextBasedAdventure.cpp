@@ -1,5 +1,5 @@
 #include <iostream>
-using namespace std; 
+using namespace std;
 
 void showDungeonArt() {
     cout << R"ART(
@@ -38,13 +38,12 @@ void showDungeonArt() {
     )ART" << '\n';
 }
 
-
 int main() {
     bool gameRunning = true;
     string currentRoom = "Menu";
     bool hasSword = false;
     bool enemyDefeated = false;
-    int playerHealth = 100; 
+    int playerHealth = 100;
 
     while (gameRunning) {
 
@@ -61,8 +60,8 @@ int main() {
 
             if (choice == 1) {
                 currentRoom = "Entrance";
-                cout << "\nYou step into the dungeon... it's dark and cold.\n"; 
-                cout << "Health: " << playerHealth << endl; 
+                cout << "\nYou step into the dungeon... it's dark and cold.\n";
+                cout << "Health: " << playerHealth << endl;
                 showDungeonArt();
                 cout << "Current Room: " << currentRoom << endl;
             }
@@ -79,8 +78,9 @@ int main() {
             cout << "\nYou are standing in the dungeon entrance.\n";
             cout << "1. Go left to the Armory\n";
             cout << "2. Go right to the Hallway\n";
-            cout << "3. Examine the room\n";
-            cout << "4. Exit to Main Menu\n";
+            cout << "3. Go forward to the Library\n";
+            cout << "4. Examine the room\n";
+            cout << "5. Exit to Main Menu\n";
             cout << "Choose an option: ";
 
             int choice;
@@ -95,9 +95,13 @@ int main() {
                 cout << "\nYou walk into a long, shadowy hallway.\n";
             }
             else if (choice == 3) {
-                cout << "\nYou notice faded carvings on the stone walls. This place is older than it looks.\n";
+                currentRoom = "Library";
+                cout << "\nYou move toward the Library...\n";
             }
             else if (choice == 4) {
+                cout << "\nYou notice faded carvings on the stone walls. This place is older than it looks.\n";
+            }
+            else if (choice == 5) {
                 currentRoom = "Menu";
             }
             else {
@@ -158,7 +162,7 @@ int main() {
                     cout << "You raise your sword! The goblin shrieks and runs away.\n";
                 }
                 else {
-                    cout << "You panic... the goblin scratches you before fleeing!\n"; 
+                    cout << "You panic... the goblin scratches you before fleeing!\n";
                     cout << R"ASCII(
                          ,      ,
                         /(.-""-.)\
@@ -172,16 +176,16 @@ int main() {
                     /`    \      /    `\
                     )ASCII" << '\n';
 
-                    playerHealth -= 25; 
+                    playerHealth -= 25;
                     cout << "You took 25 damage. Health: " << playerHealth << endl;
                 }
 
                 if (playerHealth <= 0) {
-                    cout << "\nYou've taken too much damage and collapse...\n"; 
+                    cout << "\nYou've taken too much damage and collapse...\n";
                     cout << "GAME OVER\n";
-                    gameRunning = false; 
+                    gameRunning = false;
                 }
-                
+
                 enemyDefeated = true;
             }
             else {
@@ -196,6 +200,26 @@ int main() {
 
             if (choice == 1) {
                 cout << "\nYou find strange claw marks on the walls... something else might be down here.\n";
+            }
+            else if (choice == 2) {
+                currentRoom = "Entrance";
+            }
+            else {
+                cout << "\nInvalid choice. Try again.\n";
+            }
+        }
+
+        else if (currentRoom == "Library") {
+            cout << "\nYou are in the Library. Dusty books cover every wall.\n";
+            cout << "1. Examine the books\n";
+            cout << "2. Return to Entrance\n";
+            cout << "Choose an option: ";
+
+            int choice;
+            cin >> choice;
+
+            if (choice == 1) {
+                cout << "\nYou find a torn page... it mentions a creature sealed deep below.\n";
             }
             else if (choice == 2) {
                 currentRoom = "Entrance";
