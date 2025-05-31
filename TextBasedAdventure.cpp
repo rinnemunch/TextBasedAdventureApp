@@ -158,7 +158,20 @@ int main() {
                     cout << "You raise your sword! The goblin shrieks and runs away.\n";
                 }
                 else {
-                    cout << "You panic... the goblin scratches you before fleeing!\n";
+                    cout << "You panic... the goblin scratches you before fleeing!\n"; 
+                    cout << R"ASCII(
+                         ,      ,
+                        /(.-""-.)\
+                    |\  \/      \/  /|
+                    | \ / =.  .= \ / |
+                    \( \   o\/o   / )/
+                     \_, '-/  \-' ,_/
+                       /   \__/   \
+                       \ \__/\__/ /  
+                     ___\ \|--|/ /___
+                    /`    \      /    `\
+                    )ASCII" << '\n';
+
                     playerHealth -= 25; 
                     cout << "You took 25 damage. Health: " << playerHealth << endl;
                 }
