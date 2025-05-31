@@ -176,8 +176,29 @@ int main() {
                 cout << "\nA goblin jumps out from the shadows!\n";
 
                 if (hasSword) {
-                    cout << "You raise your sword! The goblin shrieks and runs away.\n";
+                    cout << "You raise your sword. The goblin hesitates...\n";
+                    cout << "1. Attack the goblin\n";
+                    cout << "2. Let it run\n";
+                    cout << "Choose an option: ";
+
+                    int fightChoice;
+                    cin >> fightChoice;
+
+                    if (fightChoice == 1) {
+                        cout << "\nYou slash the goblin! It lets out a final screech.\n";
+                        enemyDefeated = true;
+                        
+                    }
+                    else if (fightChoice == 2) {
+                        cout << "\nYou let the goblin flee. It vanishes into the dark.\n";
+                        enemyDefeated = true;
+                    }
+                    else {
+                        cout << "\nInvalid choice. The goblin escapes while you hesitate.\n";
+                        enemyDefeated = true;
+                    }
                 }
+
                 else {
                     cout << "You panic... the goblin scratches you before fleeing!\n";
                     cout << R"ASCII(
