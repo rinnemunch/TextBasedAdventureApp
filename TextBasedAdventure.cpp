@@ -98,7 +98,7 @@ int main() {
         }
 
         else if (currentRoom == "Entrance") {
-            cout << "\nYou are standing in the dungeon entrance.\n";
+            cout << "\n" << playerName << ", you are standing in the dungeon entrance.\n";
             cout << "1. Go left to the Armory\n";
             cout << "2. Go right to the Hallway\n";
             cout << "3. Go forward to the Library\n";
@@ -201,7 +201,7 @@ int main() {
                     }
                 }
                 else {
-                    cout << "You panic... the goblin scratches you before fleeing!\n";
+                    cout << playerName << ", you panic... the goblin scratches you before fleeing!\n";
                     cout << R"ASCII(
                          ,      ,
                         /(.-""-.)\
@@ -220,7 +220,7 @@ int main() {
                 }
 
                 if (playerHealth <= 0) {
-                    cout << "\nYou've taken too much damage and collapse...\n";
+                    cout << "\n" << playerName << ", you've taken too much damage and collapse...\n";
                     cout << "GAME OVER\n";
                     gameRunning = false;
                 }
