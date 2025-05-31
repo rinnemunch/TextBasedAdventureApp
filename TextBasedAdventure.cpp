@@ -1,29 +1,9 @@
 #include <iostream>
-using namespace std;
+using namespace std; 
 
-int main() {
-    bool gameRunning = true;
-    string currentRoom = "Menu";
-    bool hasSword = false;
-    bool enemyDefeated = false;
+void showDungeonArt() {
+    cout << R"ART(
 
-    while (gameRunning) {
-
-        if (currentRoom == "Menu") {
-            cout << "\n=============================\n";
-            cout << "   WELCOME TO DUNGEON QUEST\n";
-            cout << "=============================\n";
-            cout << "1. Enter the Dungeon\n";
-            cout << "2. Quit Game\n";
-            cout << "Choose an option: ";
-
-            int choice;
-            cin >> choice;
-
-            if (choice == 1) {
-                currentRoom = "Entrance";
-                cout << "\nYou step into the dungeon... it's dark and cold.\n";
-                cout << R"ART(
                   .7
                 .'/ 
                / /  
@@ -56,7 +36,32 @@ int main() {
                              "-.__""\_|"-.__.-"./      \ l
                               ".__""">G>-.__.-">       .--,_
     )ART" << '\n';
+}
 
+
+int main() {
+    bool gameRunning = true;
+    string currentRoom = "Menu";
+    bool hasSword = false;
+    bool enemyDefeated = false;
+
+    while (gameRunning) {
+
+        if (currentRoom == "Menu") {
+            cout << "\n=============================\n";
+            cout << "   WELCOME TO DUNGEON QUEST\n";
+            cout << "=============================\n";
+            cout << "1. Enter the Dungeon\n";
+            cout << "2. Quit Game\n";
+            cout << "Choose an option: ";
+
+            int choice;
+            cin >> choice;
+
+            if (choice == 1) {
+                currentRoom = "Entrance";
+                cout << "\nYou step into the dungeon... it's dark and cold.\n";
+                showDungeonArt();
                 cout << "Current Room: " << currentRoom << endl;
             }
             else if (choice == 2) {
