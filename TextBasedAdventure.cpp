@@ -101,9 +101,10 @@ int main() {
             cout << "\n" << playerName << ", you are standing in the dungeon entrance.\n";
             cout << "1. Go left to the Armory\n";
             cout << "2. Go right to the Hallway\n";
-            cout << "3. Go forward to the Library\n";
+            cout << "3. Go forward to the Library\n"; 
             cout << "4. Examine the room\n";
-            cout << "5. Return to Menu\n";
+            cout << "5. Enter the strange tunnel on the left\n";
+            cout << "6. Return to Menu\n";
             cout << "Choose an option: ";
 
             int choice;
@@ -122,6 +123,9 @@ int main() {
                 cout << "\nYou examine your surroundings. The air is thick. A carving on the wall shows a battle from long ago.\n";
             }
             else if (choice == 5) {
+                currentRoom = "TrapRoom";
+            }
+            else if (choice == 6) {
                 currentRoom = "Menu";
             }
             else {
@@ -278,7 +282,36 @@ int main() {
             else {
                 cout << "\nInvalid choice. Try again.\n";
             }
-        }
+        } 
+        else if (currentRoom == "TrapRoom") {
+            cout << "\nYou step into a narrow tunnel. As the door shuts behind you, the floor clicks.\n";
+            cout << "A trap is triggered! Choose fast:\n";
+            cout << "1. Jump backward\n";
+            cout << "2. Duck\n";
+            cout << "3. Roll forward\n";
+            cout << "Choose quickly: ";
+
+            int trapChoice;
+            cin >> trapChoice;
+
+            if (trapChoice == 3) {
+                cout << "\nYou roll just in time! Blades slice through where your head was.\n";
+            }
+            else {
+                cout << "\nWrong move! A hidden dart hits you.\n";
+                playerHealth -= 30;
+                cout << "You took 30 damage. Health: " << playerHealth << endl;
+
+                if (playerHealth <= 0) {
+                    cout << "\n" << playerName << ", you fall to the ground... the dungeon claims another victim.\n";
+                    cout << "GAME OVER\n";
+                    gameRunning = false;
+                }
+            }
+
+            currentRoom = "Entrance";
+       }
+
     }
 
     return 0;
