@@ -1,7 +1,8 @@
 #include <iostream>
 #include <string>
-using namespace std;
+using namespace std; 
 
+// ==== FUNCTION: Show Dungeon Art ====
 void showDungeonArt() {
     cout << R"ART(
 
@@ -37,9 +38,12 @@ void showDungeonArt() {
                              "-.__""\_|"-.__.-"./      \ l
                               ".__""">G>-.__.-">       .--,_
     )ART";
-}
+} 
 
+
+// Main Game Logic Begins Here
 int main() {
+    // === GAME STATE ===
     bool gameRunning = true;
     string currentRoom = "Menu";
     bool hasSword = false;
@@ -50,6 +54,7 @@ int main() {
 
     while (gameRunning) {
 
+        // === ROOM: MENU ===
         if (currentRoom == "Menu") {
             cout << R"(
 
@@ -79,7 +84,7 @@ int main() {
             cin >> choice;
 
             if (choice == 1) {
-                cin.ignore(); // clear input buffer
+                cin.ignore(); 
                 cout << "\nBefore you enter... what is your name, adventurer?\n";
                 getline(cin, playerName);
 
@@ -98,6 +103,7 @@ int main() {
             }
         }
 
+        // === ROOM: ENTRANCE ===
         else if (currentRoom == "Entrance") {
             cout << "\n" << playerName << ", you are standing in the dungeon entrance.\n";
             cout << "1. Go left to the Armory\n";
@@ -134,6 +140,7 @@ int main() {
             }
         }
 
+        // === ROOM: ARMORY ===
         else if (currentRoom == "Armory") {
             cout << "\nYou are in the Armory. Old swords and cracked shields cover the walls.\n";
 
@@ -179,6 +186,7 @@ int main() {
             }
         }
 
+        // === ROOM: HALLWAY ===
         else if (currentRoom == "Hallway") {
             if (!enemyDefeated) {
                 cout << "\nA goblin jumps out from the shadows!\n";
@@ -253,6 +261,7 @@ int main() {
             }
         }
 
+        // === ROOM: LIBRARY ===
         else if (currentRoom == "Library") {
             cout << "\nYou are in the Library. Dusty books cover every wall.\n";
             cout << "1. Examine the books\n";
@@ -292,7 +301,9 @@ int main() {
             else {
                 cout << "\nInvalid choice. Try again.\n";
             }
-        } 
+        }  
+
+        // === ROOM: TRAPROOM ===
         else if (currentRoom == "TrapRoom") {
             cout << "\nYou step into a narrow tunnel. As the door shuts behind you, the floor clicks.\n";
             cout << "A trap is triggered! Choose fast:\n";
