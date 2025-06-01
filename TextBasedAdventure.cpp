@@ -277,7 +277,8 @@ int main() {
                         wizardAppeared = true;
                         cout << "\nSuddenly, the torches flicker. A shadow steps out from behind the shelves...\n";
                         cout << "An old wizard in a deep purple robe appears, stroking his beard.\n";
-                        cout << "\"Curious minds awaken old truths,\" he says. \"Be careful what you seek, " << playerName << ".\"\n";
+                        cout << "\"Curious minds awaken old truths,\" he says. \"Be careful what you seek, " << playerName << ".\"\n"; 
+                        cout << "The wizard fades away into sparkles of light...\n";
                     }
                 }
 
