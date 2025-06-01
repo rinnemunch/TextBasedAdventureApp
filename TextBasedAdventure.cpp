@@ -46,6 +46,7 @@ int main() {
     bool enemyDefeated = false;
     int playerHealth = 100;
     string playerName;
+    bool wizardAppeared = false;
 
     while (gameRunning) {
 
@@ -271,7 +272,15 @@ int main() {
                 if (readChoice == 1) {
                     cout << "\nYou read further... The page speaks of a Lich King buried beneath the dungeon,\n";
                     cout << "sealed away by fire and blood. His return could unmake the world.\n";
+
+                    if (!wizardAppeared) {
+                        wizardAppeared = true;
+                        cout << "\nSuddenly, the torches flicker. A shadow steps out from behind the shelves...\n";
+                        cout << "An old wizard in a deep purple robe appears, stroking his beard.\n";
+                        cout << "\"Curious minds awaken old truths,\" he says. \"Be careful what you seek, " << playerName << ".\"\n";
+                    }
                 }
+
                 else {
                     cout << "\nYou put the book back.\n";
                 }
