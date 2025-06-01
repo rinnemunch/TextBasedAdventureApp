@@ -309,6 +309,10 @@ int main() {
                 }
             }
 
+            if (playerHealth > 0) {
+                cout << "\n" << playerName << ", you stumble back into the dungeon entrance, still breathing...\n";
+            }
+
             currentRoom = "Entrance";
        }
 
