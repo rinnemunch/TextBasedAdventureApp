@@ -4,6 +4,14 @@
 #include <thread>
 using namespace std;  
 
+// == Color Codes == 
+#define RESET   "\033[0m"
+#define RED     "\033[31m"
+#define GREEN   "\033[32m"
+#define YELLOW  "\033[33m"
+#define CYAN    "\033[36m"
+
+
 // == Type Text Function ==
 void typeText(const string& text, int delayMs = 30) {
     for (char c : text) {
@@ -242,7 +250,7 @@ int main() {
                     )ASCII";
 
                     playerHealth -= 25;
-                    cout << "You took 25 damage. Health: " << playerHealth << endl;
+                    cout << RED << "You took 25 damage!" << RESET << endl;
                 }
 
                 if (playerHealth <= 0) {
