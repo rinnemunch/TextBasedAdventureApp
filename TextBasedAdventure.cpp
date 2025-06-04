@@ -1,6 +1,17 @@
 #include <iostream>
-#include <string>
-using namespace std; 
+#include <string> 
+#include <chrono>
+#include <thread>
+using namespace std;  
+
+// == Type Text Function ==
+void typeText(const string& text, int delayMs = 30) {
+    for (char c : text) {
+        cout << c << flush;
+        this_thread::sleep_for(chrono::milliseconds(delayMs));
+    }
+    cout << endl;
+}
 
 // ==== FUNCTION: Show Dungeon Art ====
 void showDungeonArt() {
@@ -89,7 +100,7 @@ int main() {
                 getline(cin, playerName);
 
                 currentRoom = "Entrance";
-                cout << "\nWelcome, " << playerName << ". You step into the dungeon... it's dark and cold.\n";
+                typeText("\nWelcome, " + playerName + ". You step into the dungeon... it's dark and cold.");
                 cout << "Health: " << playerHealth << endl;
                 showDungeonArt();
                 cout << "Current Room: " << currentRoom << endl;
@@ -187,7 +198,9 @@ int main() {
         }
 
         // === ROOM: HALLWAY ===
-        else if (currentRoom == "Hallway") {
+        else if (currentRoom == "Hallway") { 
+
+            // === ENCOUNTER: GOBLIN ===
             if (!enemyDefeated) {
                 cout << "\nA goblin jumps out from the shadows!\n";
 
@@ -282,6 +295,7 @@ int main() {
                     cout << "\nYou read further... The page speaks of a Lich King buried beneath the dungeon,\n";
                     cout << "sealed away by fire and blood. His return could unmake the world.\n";
 
+                    // === EVENT: Wizard Encounter (Library) ===
                     if (!wizardAppeared) {
                         wizardAppeared = true;
                         cout << "\nSuddenly, the torches flicker. A shadow steps out from behind the shelves...\n";
@@ -337,7 +351,7 @@ int main() {
             currentRoom = "Entrance";
        }
 
-    }
+    } // end of while (gameRunning)
 
     return 0;
 }
