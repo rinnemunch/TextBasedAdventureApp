@@ -97,7 +97,7 @@ int main() {
 )";
             cout << "1. Enter the Dungeon\n";
             cout << "2. Quit Game\n";
-            cout << "Choose an option: ";
+            cout << YELLOW << "Choose an option: " << RESET;
 
             int choice;
             cin >> choice;
@@ -109,7 +109,7 @@ int main() {
 
                 currentRoom = "Entrance";
                 typeText("\n" + playerName + ", you are standing in the dungeon entrance.");
-                cout << "Health: " << playerHealth << endl;
+                cout << GREEN << "Health: " << playerHealth << RESET << endl;
                 showDungeonArt();
                 cout << "Current Room: " << currentRoom << endl;
             }
@@ -343,11 +343,11 @@ int main() {
             else {
                 cout << "\nWrong move! A hidden dart hits you.\n";
                 playerHealth -= 30;
-                cout << "You took 30 damage. Health: " << playerHealth << endl;
+                cout << RED << "You took 30 damage. Health: " << playerHealth << RESET << endl;
 
                 if (playerHealth <= 0) {
                     cout << "\n" << playerName << ", you fall to the ground... the dungeon claims another victim.\n";
-                    cout << "GAME OVER\n";
+                    cout << RED << "GAME OVER\n" << RESET;
                     gameRunning = false;
                 }
             }
