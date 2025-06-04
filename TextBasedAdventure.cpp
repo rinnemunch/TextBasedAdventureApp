@@ -100,7 +100,7 @@ int main() {
                 getline(cin, playerName);
 
                 currentRoom = "Entrance";
-                typeText("\nWelcome, " + playerName + ". You step into the dungeon... it's dark and cold.");
+                typeText("\n" + playerName + ", you are standing in the dungeon entrance.");
                 cout << "Health: " << playerHealth << endl;
                 showDungeonArt();
                 cout << "Current Room: " << currentRoom << endl;
@@ -172,7 +172,7 @@ int main() {
             if (!hasSword) {
                 if (choice == 1) {
                     hasSword = true;
-                    cout << "\nYou picked up a rusty old sword. It might still work...\n";
+                    typeText("\nYou picked up a rusty old sword. It might still work...");
                 }
                 else if (choice == 2) {
                     cout << "\nYou examine the walls. One sword has a notch shaped like a dragon's tooth.\n";
@@ -202,7 +202,7 @@ int main() {
 
             // === ENCOUNTER: GOBLIN ===
             if (!enemyDefeated) {
-                cout << "\nA goblin jumps out from the shadows!\n";
+                typeText("\nA goblin jumps out from the shadows!");
 
                 if (hasSword) {
                     cout << "You raise your sword. The goblin hesitates...\n";
@@ -246,8 +246,8 @@ int main() {
                 }
 
                 if (playerHealth <= 0) {
-                    cout << "\n" << playerName << ", you've taken too much damage and collapse...\n";
-                    cout << "GAME OVER\n";
+                    typeText("\n" + playerName + ", you've taken too much damage and collapse...");
+                    typeText("GAME OVER");
                     gameRunning = false;
                 }
 
@@ -292,16 +292,16 @@ int main() {
                 cin >> readChoice;
 
                 if (readChoice == 1) {
-                    cout << "\nYou read further... The page speaks of a Lich King buried beneath the dungeon,\n";
-                    cout << "sealed away by fire and blood. His return could unmake the world.\n";
+                    typeText("\nYou read further... The page speaks of a Lich King buried beneath the dungeon,");
+                    typeText("sealed away by fire and blood. His return could unmake the world.");
 
                     // === EVENT: Wizard Encounter (Library) ===
                     if (!wizardAppeared) {
                         wizardAppeared = true;
-                        cout << "\nSuddenly, the torches flicker. A shadow steps out from behind the shelves...\n";
-                        cout << "An old wizard in a deep purple robe appears, stroking his beard.\n";
-                        cout << "\"Curious minds awaken old truths,\" he says. \"Be careful what you seek, " << playerName << ".\"\n"; 
-                        cout << "The wizard fades away into sparkles of light...\n";
+                        typeText("\nSuddenly, the torches flicker. A shadow steps out from behind the shelves...");
+                        typeText("An old wizard in a deep purple robe appears, stroking his beard.");
+                        typeText("\"Curious minds awaken old truths,\" he says. \"Be careful what you seek, " + playerName + ".\"");
+                        typeText("The wizard fades away into sparkles of light...");
                     }
                 }
 
@@ -319,8 +319,8 @@ int main() {
 
         // === ROOM: TRAPROOM ===
         else if (currentRoom == "TrapRoom") {
-            cout << "\nYou step into a narrow tunnel. As the door shuts behind you, the floor clicks.\n";
-            cout << "A trap is triggered! Choose fast:\n";
+            typeText("\nYou step into a narrow tunnel. As the door shuts behind you, the floor clicks.");
+            typeText("A trap is triggered! Choose fast:");
             cout << "1. Jump backward\n";
             cout << "2. Duck\n";
             cout << "3. Roll forward\n";
