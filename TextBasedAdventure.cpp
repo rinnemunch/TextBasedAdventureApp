@@ -374,8 +374,8 @@ int main() {
 
             if (!skeletonDefeated) {
                 if (!hasSword) {
-                    typeText("You step forward... but realize you’re unarmed. The skeleton stares at you, unmoved.");
-                    typeText("You decide to come back later when you’re better equipped.");
+                    typeText("You step forward... but realize you're unarmed. The skeleton stares at you, unmoved.");
+                    typeText("You decide to come back later when you're better equipped.");
                 }
                 else {
                     int skeletonHealth = 30;
