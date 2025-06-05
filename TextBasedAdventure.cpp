@@ -71,6 +71,8 @@ int main() {
     int playerHealth = 100;
     string playerName;
     bool wizardAppeared = false;
+    bool wizardHealed = false;
+
 
     while (gameRunning) {
 
@@ -307,7 +309,6 @@ int main() {
 
                 int readChoice;
                 cin >> readChoice;
-
                 if (readChoice == 1) {
                     typeText("\nYou read further... The page speaks of a Lich King buried beneath the dungeon,");
                     typeText("sealed away by fire and blood. His return could unmake the world.");
@@ -318,9 +319,34 @@ int main() {
                         typeText("\nSuddenly, the torches flicker. A shadow steps out from behind the shelves...");
                         typeText("An old wizard in a deep purple robe appears, stroking his beard.");
                         typeText("\"Curious minds awaken old truths,\" he says. \"Be careful what you seek, " + playerName + ".\"");
+
+                        // === Healing Interaction ===
+                        if (playerHealth < 100 && !wizardHealed) {
+                            typeText("\nThe wizard notices your wounds.");
+                            typeText("\"You've been injured. Would you like me to heal you?\"");
+
+                            cout << "1. Accept healing\n";
+                            cout << "2. Decline\n";
+                            cout << "Choose an option: ";
+                            int healChoice;
+                            cin >> healChoice;
+
+                            if (healChoice == 1) {
+                                playerHealth = 100;
+                                wizardHealed = true;
+                                typeText("The wizard lifts his staff. A warm light surrounds you...");
+                                typeText(GREEN + string("You feel completely restored!") + RESET);
+                            }
+                            else {
+                                typeText("\"Very well,\" the wizard says. \"I won’t ask again.\"");
+                                wizardHealed = true;
+                            }
+                        }
+
                         typeText("The wizard fades away into sparkles of light...");
                     }
                 }
+
 
                 else {
                     cout << "\nYou put the book back.\n";
