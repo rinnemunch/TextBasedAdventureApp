@@ -71,7 +71,8 @@ int main() {
     int playerHealth = 100;
     string playerName;
     bool wizardAppeared = false;
-    bool wizardHealed = false;
+    bool wizardHealed = false; 
+    bool potionFound = false;
 
 
     while (gameRunning) {
@@ -149,8 +150,20 @@ int main() {
                 currentRoom = "Library";
             }
             else if (choice == 4) {
-                cout << "\nYou examine your surroundings. The air is thick. A carving on the wall shows a battle from long ago.\n";
+                if (!potionFound) {
+                    typeText("\nYou examine your surroundings... you notice a loose stone near the wall.");
+                    typeText("Behind it, you find a small red potion vial!");
+                    cout << GREEN << "You drink the potion and recover 25 health!" << RESET << endl;
+
+                    playerHealth += 25;
+                    if (playerHealth > 100) playerHealth = 100;
+                    potionFound = true;
+                }
+                else {
+                    cout << "\nYou examine the room again, but there's nothing new.\n";
+                }
             }
+
             else if (choice == 5) {
                 currentRoom = "TrapRoom";
             }
