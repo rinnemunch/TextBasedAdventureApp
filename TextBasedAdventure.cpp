@@ -167,11 +167,13 @@ int main() {
             if (!hasSword) {
                 cout << "1. Take the sword\n";
                 cout << "2. Examine the room\n";
-                cout << "3. Return to Entrance\n";
+                cout << "3. Enter the Training Room\n";
+                cout << "4. Return to Entrance\n";
             }
             else {
                 cout << "1. Examine the room\n";
-                cout << "2. Return to Entrance\n";
+                cout << "2. Enter the Training Room\n";
+                cout << "3. Return to Entrance\n";
             }
 
             cout << "Choose an option: ";
