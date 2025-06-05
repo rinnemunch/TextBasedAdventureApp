@@ -373,52 +373,58 @@ int main() {
             typeText("\nYou step into the Training Room. A skeleton warrior clatters to life from the corner...");
 
             if (!skeletonDefeated) {
-                int skeletonHealth = 30;
+                if (!hasSword) {
+                    typeText("You step forward... but realize you’re unarmed. The skeleton stares at you, unmoved.");
+                    typeText("You decide to come back later when you’re better equipped.");
+                }
+                else {
+                    int skeletonHealth = 30;
 
-                while (skeletonHealth > 0 && playerHealth > 0) {
-                    cout << "\nYour Health: " << GREEN << playerHealth << RESET
-                        << " | Skeleton Health: " << RED << skeletonHealth << RESET << endl;
+                    while (skeletonHealth > 0 && playerHealth > 0) {
+                        cout << "\nYour Health: " << GREEN << playerHealth << RESET
+                            << " | Skeleton Health: " << RED << skeletonHealth << RESET << endl;
 
-                    cout << "1. Light Attack (5-10 dmg)\n";
-                    cout << "2. Heavy Attack (10-20 dmg)\n";
-                    cout << YELLOW << "Choose your action: " << RESET;
+                        cout << "1. Light Attack (5-10 dmg)\n";
+                        cout << "2. Heavy Attack (10-20 dmg)\n";
+                        cout << YELLOW << "Choose your action: " << RESET;
 
-                    int attackChoice;
-                    cin >> attackChoice;
+                        int attackChoice;
+                        cin >> attackChoice;
 
-                    int damage = 0;
-                    if (attackChoice == 1) {
-                        damage = 5 + rand() % 6;
-                        typeText("You strike with speed!");
-                    }
-                    else if (attackChoice == 2) {
-                        damage = 10 + rand() % 11;
-                        typeText("You commit to a heavy swing!");
-                    }
-                    else {
-                        typeText("You hesitate... and miss your chance!");
-                    }
+                        int damage = 0;
+                        if (attackChoice == 1) {
+                            damage = 5 + rand() % 6;
+                            typeText("You strike with speed!");
+                        }
+                        else if (attackChoice == 2) {
+                            damage = 10 + rand() % 11;
+                            typeText("You commit to a heavy swing!");
+                        }
+                        else {
+                            typeText("You hesitate... and miss your chance!");
+                        }
 
-                    skeletonHealth -= damage;
-                    cout << "You dealt " << damage << " damage.\n";
+                        skeletonHealth -= damage;
+                        cout << "You dealt " << damage << " damage.\n";
 
-                    if (skeletonHealth > 0) {
-                        int enemyHit = 5 + rand() % 8;
-                        typeText("The skeleton counters!");
-                        cout << RED << "The skeleton hits you for " << enemyHit << " damage!" << RESET << endl;
-                        playerHealth -= enemyHit;
+                        if (skeletonHealth > 0) {
+                            int enemyHit = 5 + rand() % 8;
+                            typeText("The skeleton counters!");
+                            cout << RED << "The skeleton hits you for " << enemyHit << " damage!" << RESET << endl;
+                            playerHealth -= enemyHit;
 
-                        if (playerHealth <= 0) {
-                            typeText("\nYou collapse beside the training dummy. The dungeon claims another adventurer...");
-                            typeText("GAME OVER");
-                            gameRunning = false;
-                            return 0;
+                            if (playerHealth <= 0) {
+                                typeText("\nYou collapse beside the training dummy. The dungeon claims another adventurer...");
+                                typeText("GAME OVER");
+                                gameRunning = false;
+                                return 0;
+                            }
                         }
                     }
-                }
 
-                typeText("The skeleton crumbles into a pile of bones.");
-                skeletonDefeated = true;
+                    typeText("The skeleton crumbles into a pile of bones.");
+                    skeletonDefeated = true;
+                }
             }
             else {
                 typeText("The Training Room is quiet. The skeleton remains defeated.");
@@ -429,6 +435,7 @@ int main() {
             cin >> nextChoice;
             currentRoom = "Armory";
             }
+
 
 
     } // end of while (gameRunning)
