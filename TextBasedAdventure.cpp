@@ -189,6 +189,9 @@ int main() {
                     cout << "\nYou examine the walls. One sword has a notch shaped like a dragon's tooth.\n";
                 }
                 else if (choice == 3) {
+                    currentRoom = "TrainingRoom";
+                }
+                else if (choice == 4) {
                     currentRoom = "Entrance";
                 }
                 else {
@@ -200,6 +203,9 @@ int main() {
                     cout << "\nYou examine the walls. One sword has a notch shaped like a dragon’s tooth.\n";
                 }
                 else if (choice == 2) {
+                    currentRoom = "TrainingRoom";
+                }
+                else if (choice == 3) {
                     currentRoom = "Entrance";
                 }
                 else {
