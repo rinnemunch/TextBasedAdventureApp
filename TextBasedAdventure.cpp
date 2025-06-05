@@ -379,8 +379,8 @@ int main() {
                     cout << "\nYour Health: " << GREEN << playerHealth << RESET
                         << " | Skeleton Health: " << RED << skeletonHealth << RESET << endl;
 
-                    cout << "1. Light Attack (5–10 dmg)\n";
-                    cout << "2. Heavy Attack (10–20 dmg)\n";
+                    cout << "1. Light Attack (5-10 dmg)\n";
+                    cout << "2. Heavy Attack (10-20 dmg)\n";
                     cout << YELLOW << "Choose your action: " << RESET;
 
                     int attackChoice;
