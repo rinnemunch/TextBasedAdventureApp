@@ -66,7 +66,8 @@ int main() {
     bool gameRunning = true;
     string currentRoom = "Menu";
     bool hasSword = false;
-    bool enemyDefeated = false;
+    bool enemyDefeated = false; 
+    bool skeletonDefeated = false;
     int playerHealth = 100;
     string playerName;
     bool wizardAppeared = false;
