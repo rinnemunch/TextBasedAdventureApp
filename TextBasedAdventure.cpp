@@ -153,16 +153,37 @@ int main() {
                 if (!potionFound) {
                     typeText("\nYou examine your surroundings... you notice a loose stone near the wall.");
                     typeText("Behind it, you find a small red potion vial!");
-                    cout << GREEN << "You drink the potion and recover 25 health!" << RESET << endl;
 
-                    playerHealth += 25;
-                    if (playerHealth > 100) playerHealth = 100;
-                    potionFound = true;
+                    if (playerHealth == 100) {
+                        cout << YELLOW << "Your health is full. Drink the potion anyway?\n" << RESET;
+                        cout << "1. Drink it now\n";
+                        cout << "2. Save it for later\n";
+                        cout << "Choose an option: ";
+
+                        int potionChoice;
+                        cin >> potionChoice;
+
+                        if (potionChoice == 1) {
+                            typeText("You drink the potion even though you're at full health. Wasteful... but refreshing.");
+                            potionFound = true;
+                        }
+                        else {
+                            typeText("You decide to leave it for later.");
+                        }
+                    }
+                    else {
+                        typeText("You drink the potion and feel your wounds healing.");
+                        playerHealth += 25;
+                        if (playerHealth > 100) playerHealth = 100;
+                        potionFound = true;
+                        cout << GREEN << "Health restored to " << playerHealth << RESET << endl;
+                    }
                 }
                 else {
-                    cout << "\nYou examine the room again, but there's nothing new.\n";
+                    cout << "\nYou already found the potion here. Nothing else of interest.\n";
                 }
             }
+
 
             else if (choice == 5) {
                 currentRoom = "TrapRoom";
