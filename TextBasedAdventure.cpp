@@ -502,7 +502,68 @@ int main() {
             int nextChoice;
             cin >> nextChoice;
             currentRoom = "Armory";
-            }
+            }  
+        // == BOSS ROOM ==  
+        else if (currentRoom == "BossRoom") {
+                typeText("\nYou enter the boss chamber. A shadow rises... it's the Dungeon Beast!");
+
+                int bossHealth = 60;
+                int phase = 1;
+
+                while (bossHealth > 0 && playerHealth > 0) {
+                    cout << "\nYour Health: " << GREEN << playerHealth << RESET
+                        << " | Boss Health: " << RED << bossHealth << RESET << endl;
+
+                    cout << "1. Strike\n";
+                    cout << "2. Defend\n";
+                    cout << "Choose your action: ";
+
+                    int action;
+                    cin >> action;
+
+                    int damage = 0;
+                    if (action == 1) {
+                        damage = 10 + rand() % 6;
+                        typeText("You attack the beast!");
+                        bossHealth -= damage;
+                        cout << "You dealt " << damage << " damage.\n";
+                    }
+                    else if (action == 2) {
+                        typeText("You brace yourself for the attack...");
+                    }
+                    else {
+                        typeText("You hesitate... and lose momentum!");
+                    }
+
+                    if (bossHealth > 0) {
+                        int bossDmg = (phase == 1) ? (8 + rand() % 6) : (12 + rand() % 6);
+                        if (action == 2) bossDmg /= 2;
+
+                        typeText("The Dungeon Beast lashes out!");
+                        cout << RED << "You take " << bossDmg << " damage!" << RESET << endl;
+                        playerHealth -= bossDmg;
+                    }
+
+                    if (bossHealth <= 30 && phase == 1) {
+                        phase = 2;
+                        typeText("\nThe Beast roars and grows more furious! Phase 2 begins!");
+                    }
+
+                    if (playerHealth <= 0) {
+                        typeText("\nYou fall... the beast stands victorious.");
+                        typeText("GAME OVER");
+                        gameRunning = false;
+                        return 0;
+                    }
+                }
+
+                typeText("\nThe Dungeon Beast collapses with a ground-shaking thud...");
+                typeText("You walk up to its altar and claim a gleaming enchanted sword!");
+                hasSword = true;
+                bossDefeated = true;
+                currentRoom = "Entrance";
+                }
+
 
 
 
