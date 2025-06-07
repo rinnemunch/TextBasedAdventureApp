@@ -71,8 +71,9 @@ int main() {
     int playerHealth = 100;
     string playerName;
     bool wizardAppeared = false;
-    bool wizardHealed = false; 
+    bool wizardHealed = false
     bool potionFound = false;
+    bool bossDefeated = false; 
 
 
     while (gameRunning) {
