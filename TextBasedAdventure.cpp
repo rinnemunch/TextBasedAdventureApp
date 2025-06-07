@@ -71,7 +71,7 @@ int main() {
     int playerHealth = 100;
     string playerName;
     bool wizardAppeared = false;
-    bool wizardHealed = false
+    bool wizardHealed = false;
     bool potionFound = false;
     bool bossDefeated = false; 
 
@@ -135,7 +135,11 @@ int main() {
             cout << "3. Go forward to the Library\n"; 
             cout << "4. Examine the room\n";
             cout << "5. Enter the strange tunnel on the left\n";
-            cout << "6. Return to Menu\n";
+            cout << "6. Return to Menu\n"; 
+            if (skeletonDefeated && enemyDefeated && !bossDefeated) {
+                cout << "7. Enter the final door with strange markings\n";
+            }
+
             cout << "Choose an option: ";
 
             int choice;
@@ -191,6 +195,9 @@ int main() {
             }
             else if (choice == 6) {
                 currentRoom = "Menu";
+            } 
+            else if (choice == 7 && skeletonDefeated && enemyDefeated && !bossDefeated) {
+                currentRoom = "BossRoom";
             }
             else {
                 cout << "\nInvalid choice. Try again.\n";
