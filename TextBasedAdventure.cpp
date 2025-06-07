@@ -65,7 +65,12 @@ int main() {
     // === GAME STATE ===
     bool gameRunning = true;
     string currentRoom = "Menu";
-    bool hasSword = false;
+    bool hasSword = false; 
+    // Sword Level:
+    // 1 = Basic sword (default from Armory)
+    // 2 = Enchanted sword (earned from Boss Room)
+    // Future fights should scale damage based on swordLevel
+    int swordLevel = 1;
     bool enemyDefeated = false; 
     bool skeletonDefeated = false;
     int playerHealth = 100;
@@ -559,7 +564,8 @@ int main() {
 
                 typeText("\nThe Dungeon Beast collapses with a ground-shaking thud...");
                 typeText("You walk up to its altar and claim a gleaming enchanted sword!");
-                hasSword = true;
+                hasSword = true; 
+                swordLevel = 2; // This is for the enchanted sword's power
                 bossDefeated = true;
                 currentRoom = "Entrance";
                 }
