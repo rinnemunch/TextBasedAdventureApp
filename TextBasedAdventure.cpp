@@ -92,7 +92,9 @@ int main() {
     bool wizardAppeared = false;
     bool wizardHealed = false;
     bool potionFound = false;
-    bool bossDefeated = false; 
+    bool bossDefeated = false;  
+    bool goblinReturned = false;
+    bool goblinSpared = false;
 
 
     while (gameRunning) {
@@ -132,7 +134,8 @@ int main() {
                 getline(cin, playerName);
 
                 currentRoom = "Entrance";
-                typeText("\n" + playerName + ", you are standing in the dungeon entrance.");  
+                typeText("\n" + playerName + ", you are standing in the dungeon entrance.");    
+
 
                 // Monsters defeated
                 int totalDefeated = 0;
@@ -293,7 +296,113 @@ int main() {
         }
 
         // === ROOM: HALLWAY ===
-        else if (currentRoom == "Hallway") { 
+        else if (currentRoom == "Hallway") {  
+
+            // The goblin returns
+            if (enemyDefeated && !goblinReturned && !bossDefeated) {
+                typeText("You hear a familiar snarl behind you...");
+                typeText("It's the goblin you spared and he's back for revenge!");
+
+                goblinReturned = true;
+
+                int goblinHealth = 20;
+
+                while (goblinHealth > 0 && playerHealth > 0) {
+                    cout << "\nYour Health: " << GREEN << playerHealth << RESET
+                        << " | Goblin Health: " << RED << goblinHealth << RESET << endl;
+
+                    cout << "1. Light Attack (5-10 dmg)\n";
+                    cout << "2. Heavy Attack (10-20 dmg)\n";
+                    cout << "Choose your action: ";
+
+                    int attackChoice;
+                    cin >> attackChoice;
+
+                    int damage = 0;
+                    if (attackChoice == 1) {
+                        damage = 5 + rand() % 6;
+                        typeText("You strike with speed!");
+                    }
+                    else if (attackChoice == 2) {
+                        damage = 10 + rand() % 11;
+                        typeText("You commit to a heavy swing!");
+                    }
+                    else {
+                        typeText("You hesitate… and miss your chance!");
+                    }
+
+                    goblinHealth -= damage;
+                    cout << "You dealt " << damage << " damage.\n";
+
+                    if (goblinHealth > 0) {
+                        int enemyHit = 4 + rand() % 6;
+                        typeText("The goblin lunges at you!");
+                        cout << RED << "The goblin hits you for " << enemyHit << " damage!" << RESET << endl;
+                        playerHealth -= enemyHit;
+                    }
+
+                    if (playerHealth <= 0) {
+                        typeText("\nYou collapse at the entrance. The dungeon claims another adventurer...");
+                        typeText("GAME OVER");
+                        gameRunning = false;
+                        return 0;
+                    }
+                }
+
+                typeText("The goblin slumps over. Mercy doesn't always pay.");
+                cout << R"ASCII(
+                                             ..........                                              
+                                   ..:-=+**##%%%####%%%##**+=-:..                                    
+                                .:*%@%####@@+**+*******+@@#*##%@%*:.                                 
+                              .-%@%******#@+%+********+%+@%******%@%-.                               
+                             .+@%********#@**************@%********%@+.                              
+                            .+@@@%%@@#***#@**#%%****%%#**@#***#@@%%@@@+.                             
+                           .+@%**###*#@%**%%*+********+*%%**%@%*###**%@*.                            
+                          .+@%******+*#@@%*+#+********+#++%@@#*+******#@+.                           
+                         .=@@#**#@%***+*@%+%=**********+%+%@*+***%@#**#@@=.                          
+         ..=*####*-..    :%%+*##*+@@#***#@*#************#*%#***#@@+*##*+#%:     .-*####*=....        
+   .*#+*#+=+++++++*@#:  .*#*****+%*@@#**#@******#%%#******@#***@@*%+****+#*.  .*@*+++++++=+#*+#*..   
+   ..%@@@@@@@@%*****#@+.-%******+=#*@@***%**%%********%%*+%***@@##++******%=.+@#*****#%@@@@@@@@..    
+     .@#########%%****@#+#*******=%*@@%*#@%+************+%@#*%@@#%+*******#*#@****%%#########@:      
+      =%#####%%%##%#*+*@@*+******+#*@@@*@%+**************+#@*@@@*#*******+*@@*+*#%##%%%#####%+.      
+      :@########%@%%#+*%@++*********@@@@@#+**************+*@@@@@*********++%%*+#%%@%########@:       
+      .%%#########@@@*+#@*+*******+*@@@@@++**************++%@@@@*+*******+*@%++@@@#########%%:       
+      .%%#########%@@*+%@%++******+#@@@@@++**************++%@@@@%+*******+%@%+*@@%#########%%:       
+      .*%######%###@@+*@@%#*#@@@@@@@@@@@@*#**************#*@@@@@@@@@@@@#+#%@@*+@@###%######%*.       
+      .-%%######@##%@+*@%*@@#===+@#*#@@@@%****************%@@@@#*#%*===#@@*%@*+@@##@#######%-.       
+       .=%######%@%%#**@#%%+*******++***%@%*#+*********#*%@%***++*******=%%*@#+#@%@#######%=.        
+        ..*@%#####@@%+#%*%****##@@@@@@%##%@@*#********#*@@%##%@@@@@@#*****%*%#+#@@%####%%*:..        
+          ..+@%####@@*#%*%%**%@@@@@@@@@%@@@@@%#******#%@@@@@%@@@@@@@@@%**%%*%#*@@####%@+..           
+           ..+######@@##*#***@@@@@@##*%@@@@@@@@@@**@@@@@@@@@@%*##@@@@@@***#*##@@####*#+..            
+            .:#*#####@@###++#@@@@@%*@@@*@@@@%@@%*++*%@@%@@@@*@@@*#@@@@@%+**##@@#####*#:.             
+            ..*#*#####@%#*++%@@@@*%%%*@%%@@%@#%#****#%#@%@@%%@+%%%*@@@@%+**#%@#####*#*..             
+             .:%*#%###@%#***+@@@@@+@@@%+@@%@#%#*+**+*#%#@%@@*%@@@+@@@@@+***#%@###%#*%-..             
+              .+%*%%##%@#***++@@@@@@@@@@%%##%%#@#==#@#%%##%%@@@@@@@@@@*+***#@%##%%*%*...             
+               .#%#%%%@@%**+**++*######****#@*@@@@@@@@*%#****#######++**+**%@@%%%#%#..                
+                .*%#%@@@@***+************#%@*%@@@@@@@@%*@%#************+***@@@@%#%*..                 
+                 .=%#%@@@@**%#===##**#%%%%@**@@@@@@@@@@**@%%%%%**##===*%**@@@@%#%=.                   
+                  ..+@%%@@@#=****++@@@@******@@@@#*@@@@**#***@@@@++****=#@@@%%@*..                    
+                     ..%@%%@@@@@@@##@@@*+*##+#@@%==%@@#+%#*+*@@@##@@@@@%@%%@%:....                    
+                       ..+@@%#%#****#@%+==+**#++#**#++#**+==+%@#****#%#%@@*..                         
+                         .:@@##*#***#%*=+***+**********+***+=*%#***%*##@@:.                          
+                          .-@@##******+*+++*=**********=*+++*+*#***+##@@=                            
+                           .%@##+***+*+#+++*=***+**++**=*+++#+*+***+##@%.                            
+                           .-@###+*#*##%+**#%++#+==+#*+%##*+%##*#*+##*@=                             
+                            .%@**%+*+=-+=+-#:=#:-#*-:#=-%-+=*-=+#+%*+@%:                             
+                            .=@%%+#**%@=-=-*:=#::##::*=:#-=-=@%**#+%%@=.                             
+                            .-@%#@****@@@#=#:-+::##::=-:%=#@@@****%#%@-.                             
+                             .*@*#%#**@%@@@@@@@%#@@#%@@@@@@@%@***%#*@*..                             
+                            ..:%%*##++*%%@@@@@@@@@@@@@@@@@@%%*++##*@%-.                              
+                              .:*@%%++**#%@@@@@@@@@@@@@@@@%#**++%%@*:.                               
+                                ..=@#+=****#@@@@%@@%@@@@%****=+#@=...                                
+                                  .=@@*+=++***###**###***++=+#@@=.                                   
+                                    .=@@#++==++++++++++==++#@@+.                                     
+                                      .=%@#+==++++++++==+#@%=.                                       
+                                       ..-#@%%%%****%%%%@#=..                                        
+                                          ................                                           
+)ASCII";
+
+            }
 
             // === ENCOUNTER: GOBLIN ===
             if (!enemyDefeated) {
@@ -314,8 +423,9 @@ int main() {
                     }
                     else if (fightChoice == 2) {
                         cout << "\nYou let the goblin flee. It vanishes into the dark.\n";
-                        enemyDefeated = true;
+                        goblinSpared = true;
                     }
+
                     else {
                         cout << "\nInvalid choice. The goblin escapes while you hesitate.\n";
                         enemyDefeated = true;
