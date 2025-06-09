@@ -350,7 +350,10 @@ int main() {
             }
             else {
                 cout << "\nThe hallway is quiet. Whatever was here before is gone.\n";
-            }
+            }  
+            int messageIndex = rand() % 8;
+            typeText(entranceAtmosphere[messageIndex]);
+
 
             cout << "1. Examine the hallway\n";
             cout << "2. Return to Entrance\n";
@@ -371,7 +374,10 @@ int main() {
 
         // === ROOM: LIBRARY ===
         else if (currentRoom == "Library") {
-            cout << "\nYou are in the Library. Dusty books cover every wall.\n";
+            cout << "\nYou are in the Library. Dusty books cover every wall.\n"; 
+            int messageIndex = rand() % 8;
+            typeText(entranceAtmosphere[messageIndex]);
+
             cout << "1. Examine the books\n";
             cout << "2. Return to Entrance\n";
             cout << "Choose an option: ";
@@ -438,7 +444,11 @@ int main() {
 
         // === ROOM: TRAPROOM ===
         else if (currentRoom == "TrapRoom") {
-            typeText("\nYou step into a narrow tunnel. As the door shuts behind you, the floor clicks.");
+            typeText("You step into a narrow tunnel...");
+            int messageIndex = rand() % 8;
+            typeText(entranceAtmosphere[messageIndex]);
+            typeText("As the door shuts behind you, the floor clicks.");
+
             typeText("A trap is triggered! Choose fast:");
             cout << "1. Jump backward\n";
             cout << "2. Duck\n";
