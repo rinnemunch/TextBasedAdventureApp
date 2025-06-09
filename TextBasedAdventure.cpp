@@ -118,7 +118,10 @@ int main() {
                 getline(cin, playerName);
 
                 currentRoom = "Entrance";
-                typeText("\n" + playerName + ", you are standing in the dungeon entrance.");
+                typeText("\n" + playerName + ", you are standing in the dungeon entrance."); 
+                if (!bossDefeated) {
+                    typeText("You notice a large door covered in runes. It looks important, but it won't budge.");
+                }
                 cout << GREEN << "Health: " << playerHealth << RESET << endl;
                 showDungeonArt();
                 cout << "Current Room: " << currentRoom << endl;
