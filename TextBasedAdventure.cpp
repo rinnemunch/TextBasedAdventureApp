@@ -350,10 +350,9 @@ int main() {
             }
             else {
                 cout << "\nThe hallway is quiet. Whatever was here before is gone.\n";
-            }  
-            int messageIndex = rand() % 8;
-            typeText(entranceAtmosphere[messageIndex]);
-
+                int messageIndex = rand() % 8;
+                typeText(entranceAtmosphere[messageIndex]);
+            }
 
             cout << "1. Examine the hallway\n";
             cout << "2. Return to Entrance\n";
