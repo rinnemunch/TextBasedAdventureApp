@@ -118,7 +118,15 @@ int main() {
                 getline(cin, playerName);
 
                 currentRoom = "Entrance";
-                typeText("\n" + playerName + ", you are standing in the dungeon entrance."); 
+                typeText("\n" + playerName + ", you are standing in the dungeon entrance.");  
+
+                // Monsters defeated
+                int totalDefeated = 0;
+                if (enemyDefeated) totalDefeated++;
+                if (skeletonDefeated) totalDefeated++;
+
+                cout << YELLOW << "Monsters defeated: " << totalDefeated << "/2" << RESET << endl;
+
                 if (!bossDefeated) {
                     typeText("You notice a large door covered in runes. It looks important, but it won't budge.");
                 }
