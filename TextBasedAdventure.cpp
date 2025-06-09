@@ -59,9 +59,23 @@ void showDungeonArt() {
     )ART";
 } 
 
+// Random Entrance Atmosphere 
+string entranceAtmosphere[] = {
+    "A cold draft sweeps through the hall...",
+    "The torches flicker for a moment.",
+    "You hear dripping water echoing in the dark.",
+    "Dust floats in the air like falling snow.",
+    "The ground vibrates slightly beneath your feet.",
+    "A low rumble echoes from deep below.",
+    "You catch a faint smell of smoke in the air.",
+    "A whisper of wind brushes past your neck."
+}; 
+
 
 // Main Game Logic Begins Here
-int main() {
+int main() { 
+    srand(time(0));
+
     // === GAME STATE ===
     bool gameRunning = true;
     string currentRoom = "Menu";
@@ -125,7 +139,11 @@ int main() {
                 if (enemyDefeated) totalDefeated++;
                 if (skeletonDefeated) totalDefeated++;
 
-                cout << YELLOW << "Monsters defeated: " << totalDefeated << "/2" << RESET << endl;
+                cout << YELLOW << "Monsters defeated: " << totalDefeated << "/2" << RESET << endl; 
+
+                int messageIndex = rand() % 8;
+                typeText(entranceAtmosphere[messageIndex]);
+
 
                 if (!bossDefeated) {
                     typeText("You notice a large door covered in runes. It looks important, but it won't budge.");
