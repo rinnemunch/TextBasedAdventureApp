@@ -487,12 +487,14 @@ int main() {
 
         // === ROOM: LIBRARY ===
         else if (currentRoom == "Library") {
-            cout << "\nYou are in the Library. Dusty books cover every wall.\n"; 
+            cout << "\nYou are in the Library. Dusty books cover every wall.\n";  
+            cout << GREEN << "Gold: " << gold << RESET << endl;
             int messageIndex = rand() % 8;
             typeText(entranceAtmosphere[messageIndex]);
 
             cout << "1. Examine the books\n";
-            cout << "2. Return to Entrance\n";
+            cout << "2. Visit the Shop\n";
+            cout << "3. Return to Entrance\n";
             cout << "Choose an option: ";
 
             int choice;
@@ -548,6 +550,38 @@ int main() {
                 }
             }
             else if (choice == 2) {
+                typeText("\nAs you wander between shelves, a flicker of light catches your eye...");
+                typeText("A glowing portal swirls open, and a cloaked merchant steps through.");
+                typeText("\"Looking to trade? Gold talks, secrets walk,\" he whispers.\n");
+
+                cout << "You have " << gold << " gold.\n";
+                cout << "1. Health Potion (25g)\n";
+                cout << "2. Boost Sword (50g)\n";
+                cout << "3. Leave Shop\n";
+                cout << "Choose an option: ";
+
+                int shopChoice;
+                cin >> shopChoice;
+
+                if (shopChoice == 1 && gold >= 25) {
+                    playerHealth += 25;
+                    if (playerHealth > 100) playerHealth = 100;
+                    gold -= 25;
+                    cout << GREEN << "You used a potion. Health: " << playerHealth << RESET << endl;
+                }
+                else if (shopChoice == 2 && gold >= 50 && swordLevel == 1) {
+                    swordLevel = 2;
+                    gold -= 50;
+                    typeText("The merchant enchants your blade. It hums with newfound power.");
+                }
+                else if (shopChoice == 3) {
+                    typeText("\"Suit yourself,\" the merchant says, vanishing in a flash.");
+                }
+                else {
+                    typeText("\"You're not ready for that, adventurer.\"");
+                }
+            }
+            else if (choice == 3) {
                 currentRoom = "Entrance";
             }
             else {
