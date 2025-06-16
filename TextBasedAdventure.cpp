@@ -350,7 +350,10 @@ int main() {
                     }
                 }
 
-                typeText("The goblin slumps over. Mercy doesn't always pay.");
+                typeText("The goblin slumps over. Mercy doesn't always pay."); 
+                int goldEarned = 10 + rand() % 6; 
+                gold += goldEarned;
+                cout << YELLOW << "You found " << goldEarned << " gold!" << RESET << endl;
                 cout << R"ASCII(
                                              ..........                                              
                                    ..:-=+**##%%%####%%%##**+=-:..                                    
@@ -644,7 +647,10 @@ int main() {
                         }
                     }
 
-                    typeText("The skeleton crumbles into a pile of bones.");
+                    typeText("The skeleton crumbles into a pile of bones."); 
+                    int goldEarned = 15 + rand() % 6; 
+                    gold += goldEarned;
+                    cout << YELLOW << "You found " << goldEarned << " gold!" << RESET << endl;
                     skeletonDefeated = true;
                 }
             }
@@ -711,7 +717,10 @@ int main() {
                     }
                 }
 
-                typeText("\nThe Dungeon Beast collapses with a ground-shaking thud...");
+                typeText("\nThe Dungeon Beast collapses with a ground-shaking thud..."); 
+                int goldEarned = 50 + rand() % 21; 
+                gold += goldEarned;
+                cout << YELLOW << "You looted " << goldEarned << " gold from the beast!" << RESET << endl;
                 typeText("You walk up to its altar and claim a gleaming enchanted sword!");
                 hasSword = true; 
                 swordLevel = 2; // This is for the enchanted sword's power
