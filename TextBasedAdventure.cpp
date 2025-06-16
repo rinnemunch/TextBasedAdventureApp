@@ -89,7 +89,8 @@ int main() {
     bool skeletonDefeated = false;
     int playerHealth = 100;
     string playerName;
-    bool wizardAppeared = false;
+    bool wizardAppeared = false; 
+    int gold = 0;
     bool wizardHealed = false;
     bool potionFound = false;
     bool bossDefeated = false;  
