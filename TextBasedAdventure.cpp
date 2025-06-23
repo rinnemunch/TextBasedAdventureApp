@@ -1,7 +1,8 @@
 #include <iostream>
 #include <string> 
 #include <chrono>
-#include <thread>
+#include <thread> 
+#include <map>
 using namespace std;  
 
 // == Color Codes == 
@@ -92,7 +93,8 @@ int main() {
     bool wizardAppeared = false; 
     int gold = 0;
     bool wizardHealed = false;
-    bool potionFound = false;
+    bool potionFound = false; 
+    map<string, int> inventory;
     bool bossDefeated = false;  
     bool goblinReturned = false;
     bool goblinSpared = false;
